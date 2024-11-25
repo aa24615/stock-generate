@@ -1,0 +1,40 @@
+{
+  "name": "zyan/stock-generate",
+  "description": "生成一只股票数据",
+  "keywords": [
+    "生成股票",
+    "模拟股票",
+    "模拟股票数据"
+  ],
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zyan",
+      "email": "zyan@php127.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zyan\\StockGenerate\\": "./src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Zyan\\Tests\\": "./tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9.5|^10|11",
+    "friendsofphp/php-cs-fixer": "^2.18"
+  },
+  "scripts": {
+    "test": "vendor/bin/phpunit --colors=always --testdox",
+    "check-style": "php-cs-fixer fix --using-cache=no --diff --config=.php_cs --dry-run --ansi",
+    "fix-style": "php-cs-fixer fix --using-cache=no --config=.php_cs --ansi"
+  }
+}
