@@ -1,7 +1,7 @@
 <?php
 
 /*
- * This file is part of the zyan/stock-api.
+ * This file is part of the zyan/stock-generate.
  *
  * (c) 读心印 <aa24615@qq.com>
  *
@@ -10,7 +10,6 @@
  */
 
 namespace Zyan\StockGenerate;
-
 
 /**
  * Class StockGenerate.
@@ -21,26 +20,71 @@ namespace Zyan\StockGenerate;
  */
 class StockGenerate
 {
-    protected $config = [
-        'symbol' => 'SZ10000', // 股票代码
-        'name' => '虚拟xx股', // 股票名称
-        'start_date' => '2010-01-01', // 上市日期
-        'end_date' => null, // 结束日期 未传则到今天 或 结束天数
-        'end_day' => null, // 结束天数 未传则以结束日期 优先级最高
-        'upper_limit_up' => 10, // 涨停百分比
-        'upper_limit_donw' => 10, // 跌停百分比
-        'init_price' => 10, // 上市价格
-        'odds_limit_up' => 0.01, // 涨停机率
-        'odds_limit_donw' => 0.01, // 跌停机率
-        'continuity_odds_limit_up' => 0.01, //连续涨停机率
-        'continuity_odds_limit_donw' => 0.01, //连续跌停机率
-        'max_day_limit_up' => 10, //最大连续涨停天数
-        'max_day_limit_donw' => 10, //最大连续跌停天数
-    ];
+    /**
+     * @var string 股票代码
+     */
+    protected $symbol = 'SZ10000';
+    /**
+     * @var string 股票名称
+     */
+    protected $name = '虚拟xx股';
+    /**
+     * @var string 上市日期
+     */
+    protected $start_date = '2010-01-01';
+    /**
+     * @var null|string 结束日期 未传则到今天 或 结束天数
+     */
+    protected $end_date = null; //
+    /**
+     * @var null 结束天数 未传则以结束日期 优先级最高
+     */
+    protected $end_day = null; // \
+    /**
+     * @var int 涨停百分比
+     */
+    protected $upper_limit_up = 10; //
+    /**
+     * @var int 跌停百分比
+     */
+    protected $upper_limit_donw = 10; //
+    /**
+     * @var int 上市价格
+     */
+    protected $init_price = 10; //
+    /**
+     * @var int 涨停机率
+     */
+    protected $odds_limit_up = 0.01; //
+    /**
+     * @var int 跌停机率
+     */
+    protected $odds_limit_donw = 0.01;
+    /**
+     * @var int 连续涨停机率
+     */
+    protected $continuity_odds_limit_up = 0.01;
+    /**
+     * @var int 连续跌停机率
+     */
+    protected $continuity_odds_limit_donw = 0.01;
+    /**
+     * @var int 最大连续涨停天数
+     */
+    protected $max_day_limit_up = 10;
+    /**
+     * @var int 最大连续跌停天数
+     */
+    protected $max_day_limit_donw = 10;
+
+    /**
+     * @var array 股票数据
+     */
+    protected $list = [];
 
     public function __construct(array $config = [])
     {
-        $this->config = $config;
+        $this->config = $this->getConfig() + $config;
     }
 
     /**
@@ -56,11 +100,10 @@ class StockGenerate
      */
     public function setConfig(array $config): void
     {
-        $this->config = $config;
+        $this->config = $this->getConfig() + $config;
     }
 
     public function go()
     {
-
     }
 }
