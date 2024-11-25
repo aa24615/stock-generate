@@ -35,27 +35,27 @@ class StockGenerate
     /**
      * @var null|string 结束日期 未传则到今天 或 结束天数
      */
-    protected $end_date = null; //
+    protected $end_date = null;
     /**
      * @var null 结束天数 未传则以结束日期 优先级最高
      */
-    protected $end_day = null; // \
+    protected $end_day = null;
     /**
      * @var int 涨停百分比
      */
-    protected $upper_limit_up = 10; //
+    protected $upper_limit_up = 10;
     /**
      * @var int 跌停百分比
      */
-    protected $upper_limit_donw = 10; //
+    protected $upper_limit_donw = 10;
     /**
      * @var int 上市价格
      */
-    protected $init_price = 10; //
+    protected $init_price = 10;
     /**
      * @var int 涨停机率
      */
-    protected $odds_limit_up = 0.01; //
+    protected $odds_limit_up = 0.01;
     /**
      * @var int 跌停机率
      */
@@ -84,15 +84,9 @@ class StockGenerate
 
     public function __construct(array $config = [])
     {
-        $this->config = $this->getConfig() + $config;
-    }
-
-    /**
-     * @return array
-     */
-    public function getConfig(): array
-    {
-        return $this->config;
+        foreach ($config as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     /**
@@ -100,10 +94,15 @@ class StockGenerate
      */
     public function setConfig(array $config): void
     {
-        $this->config = $this->getConfig() + $config;
+        foreach ($config as $key => $value) {
+            $this->$key = $value;
+        }
     }
 
     public function go()
     {
+        while (true){
+            $this->list = [];
+        }
     }
 }
