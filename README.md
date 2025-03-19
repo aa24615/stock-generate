@@ -1,5 +1,3 @@
-
-
 # zyan/stock-generate
 
 生成一只股票数据
@@ -24,14 +22,14 @@ $config = [
     'end_date' => null, // 结束日期 未传则到今天 或 结束天数
     'end_day' => null, // 结束天数 未传则以结束日期 优先级最高
     'upper_limit_up' => 10, // 涨停百分比
-    'upper_limit_donw' => 10, // 跌停百分比
+    'upper_limit_down' => 10, // 跌停百分比
     'init_price' => 10, // 上市价格
     'odds_limit_up' => 0.01, // 涨停机率
-    'odds_limit_donw' => 0.01, // 跌停机率
+    'odds_limit_down' => 0.01, // 跌停机率
     'continuity_odds_limit_up' => 0.01, //连续涨停机率
-    'continuity_odds_limit_donw' => 0.01, //连续跌停机率
+    'continuity_odds_limit_down' => 0.01, //连续跌停机率
     'max_day_limit_up' => 10, //最大连续涨停天数
-    'max_day_limit_donw' => 10, //最大连续跌停天数
+    'max_day_limit_down' => 10, //最大连续跌停天数
 ];
 
 $stock = new StockGenerate($config);
